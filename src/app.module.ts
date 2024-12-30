@@ -8,8 +8,8 @@ import { HardSkillModule } from './hard-skill/hard-skill.module';
 import { CertificationModule } from './certification/certification.module';
 import { AboutModule } from './about/about.module';
 import { AnalyticsModule } from './analytics/analytics.module';
-import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { ServeStaticModule } from '@nestjs/serve-static';
 
 
 @Module({
