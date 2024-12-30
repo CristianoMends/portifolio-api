@@ -8,9 +8,16 @@ import { HardSkillModule } from './hard-skill/hard-skill.module';
 import { CertificationModule } from './certification/certification.module';
 import { AboutModule } from './about/about.module';
 import { AnalyticsModule } from './analytics/analytics.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+
 
 @Module({
-  imports: [    
+  imports: [  
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+      serveRoot: '/'
+    }),  
     ProjectModule,TypeOrmModule.forRoot(config), HardSkillModule, CertificationModule, AboutModule, AnalyticsModule
   ],
   controllers: [AppController],
