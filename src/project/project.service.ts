@@ -3,7 +3,7 @@ import { CreateProjectDto } from './dto/create-project.dto';
 import { Project } from './entities/project.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { put } from '@vercel/blob';
+import { del, put } from '@vercel/blob';
 
 @Injectable()
 export class ProjectService {
@@ -23,9 +23,9 @@ export class ProjectService {
 
     const project = this.projectRepository.create(createProjectDto);
 
-    const blob = await put(`${project.id}`, image.buffer, {
+    const blob = await put(`project/image.png`, image.buffer, {
       access: 'public',
-      addRandomSuffix: false
+      addRandomSuffix: true
     });
 
     project.image = blob.url;
@@ -37,7 +37,7 @@ export class ProjectService {
   }
 
   async remove(id: number): Promise<void> {
-    const project = await this.projectRepository.find({
+    const project = await this.projectRepository.findOne({
       where: {
         id: id
       }
@@ -47,6 +47,7 @@ export class ProjectService {
       throw new NotFoundException(`Project with ID ${id} not found`);
     }
 
+    del(project.image);
     await this.projectRepository.remove(project);
   }
 }

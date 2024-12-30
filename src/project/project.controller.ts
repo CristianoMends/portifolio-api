@@ -13,8 +13,8 @@ export class ProjectController {
   async create(
     @UploadedFile('file') file: Express.Multer.File,
     @Body() createProjectDto: CreateProjectDto
-  ): Promise<Project> {
-    return this.projectService.create(createProjectDto, file);
+  ): Promise<void> {
+    await this.projectService.create(createProjectDto, file);
   }
 
   @Get()

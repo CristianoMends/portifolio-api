@@ -20,12 +20,20 @@ export class Project {
   @Column({ nullable: true })
   youtubeUrl: string;
 
-  @Column({ nullable: true })
-  technologies: string;
+  @Column({ type: 'text', nullable: true })
+  private technologies: string;
+  
+  getTechnologies(): string[] {
+    return this.technologies ? JSON.parse(this.technologies) : [];
+  }
+
+  setTechnologies(value: string) {
+    this.technologies = value;
+  }
 
   @Column()
-  image:string;
-  
+  image: string;
+
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: string;
 }
