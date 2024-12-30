@@ -34,6 +34,6 @@ export class Project {
   @Column()
   image: string;
 
-  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
-  createdAt: string;
+  @Column()
+  createdAt: Date;
 }

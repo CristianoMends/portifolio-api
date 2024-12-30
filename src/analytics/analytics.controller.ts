@@ -4,26 +4,19 @@ import { CreateAnalyticsDto } from './dto/create-analytics.dto';
 
 @Controller('analytics')
 export class AnalyticsController {
-  constructor(private readonly analyticsService: AnalyticsService) {}
+  constructor(private readonly analyticsService: AnalyticsService) { }
 
   @Post()
   create(@Body() createAnalyticsDto: CreateAnalyticsDto) {
     return this.analyticsService.create(createAnalyticsDto);
   }
 
-
-
   @Get()
   findAll() {
     return this.analyticsService.findAll();
   }
   @Get('/count')
-  async findCount():Promise<number> {
+  async findCount(): Promise<number> {
     return await this.analyticsService.findCount();
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.analyticsService.remove(+id);
   }
 }

@@ -7,23 +7,20 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class AnalyticsService {
   constructor(
-    @InjectRepository(Analytics) private repo:Repository<Analytics>
-  ){}
+    @InjectRepository(Analytics) private repo: Repository<Analytics>
+  ) { }
 
   async create(createAnalyticsDto: CreateAnalyticsDto) {
     const analytics = this.repo.create(createAnalyticsDto);
+    analytics.accessDate = new Date();
     return await this.repo.save(analytics);
   }
 
-  async findAll():Promise<Analytics[]> {
+  async findAll(): Promise<Analytics[]> {
     return await this.repo.find();
   }
 
-  async findCount():Promise<number>{
+  async findCount(): Promise<number> {
     return (await this.repo.find()).length;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} analytics`;
   }
 }

@@ -29,6 +29,7 @@ export class ProjectService {
     });
 
     project.image = blob.url;
+    project.createdAt = new Date();
     return this.projectRepository.save(project);
   }
 

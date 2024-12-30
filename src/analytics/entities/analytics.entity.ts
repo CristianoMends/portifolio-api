@@ -8,6 +8,6 @@ export class Analytics {
     @Column()
     origin:string
   
-    @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
-    accessDate: string;
+    @Column()
+    accessDate: Date;
 }
