@@ -5,7 +5,7 @@ export class SwaggerConfig {
   static setup(app: INestApplication): void {
     const config = new DocumentBuilder()
       .setTitle('Portifolio API')
-      .setDescription('Documentação para a API do portfólio')
+      .setDescription('Documentação para a api do portifolio')
       .setVersion('1.0')
       .addTag('portifolio')
       .addBearerAuth()
@@ -13,7 +13,7 @@ export class SwaggerConfig {
 
     const document = SwaggerModule.createDocument(app, config);
 
-    SwaggerModule.setup('api-docs', app, document, {
+    SwaggerModule.setup('api', app, document, {
       swaggerOptions: {
         persistAuthorization: true,
       },
