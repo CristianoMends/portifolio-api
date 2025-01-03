@@ -1,9 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConfigModule } from '@nestjs/config';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { SwaggerConfig } from './config/SwaggerConfig';
-import { BusinessExceptionFilter } from './exception/business-exception.filter';
 import { AllExceptionsFilter } from './exception/all-exceptions.filter';
 
 ConfigModule.forRoot({
