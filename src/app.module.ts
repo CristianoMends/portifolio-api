@@ -1,15 +1,16 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { ProjectModule } from './project/project.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { HardSkillModule } from './hard-skill/hard-skill.module';
+import { CertificationModule } from './certification/certification.module';
+import { AboutModule } from './about/about.module';
+import { AnalyticsModule } from './analytics/analytics.module';
 import * as dotenv from 'dotenv';
-import { GithubModule } from './modules/github/github.module';
-import { AnalyticsModule } from './modules/analytics/analytics.module';
-import { AboutModule } from './modules/about/about.module';
-import { CertificationModule } from './modules/certification/certification.module';
-import { HardSkillModule } from './modules/hard-skill/hard-skill.module';
-import { ProjectModule } from './modules/project/project.module';
-import { AuthModule } from './modules/auth/auth.module';
 dotenv.config();
+
+
 
 @Module({
   imports: [
@@ -23,8 +24,9 @@ dotenv.config();
       synchronize: true,
       //logging: true,
     }),
-    ProjectModule, HardSkillModule, CertificationModule, AboutModule, AnalyticsModule, GithubModule, AuthModule
+    ProjectModule, HardSkillModule, CertificationModule, AboutModule, AnalyticsModule
   ],
   controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule { }
