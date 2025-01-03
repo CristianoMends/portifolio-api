@@ -10,6 +10,7 @@ ConfigModule.forRoot({
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
   app.enableCors({
     origin: true,
     allowedHeaders: 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Observe, Authorization, Access-Control-Allow-Origin',
@@ -18,10 +19,13 @@ async function bootstrap() {
   });
 
   SwaggerConfig.setup(app);
-  
+
+  app.setGlobalPrefix('api');
 
   app.useGlobalFilters(new AllExceptionsFilter());
 
-  await app.listen(3000);
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
+  console.log(`Application is running on: ${port}/api`);
 }
 bootstrap();
