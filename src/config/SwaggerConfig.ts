@@ -13,7 +13,9 @@ export class SwaggerConfig {
 
     const document = SwaggerModule.createDocument(app, config);
 
-    SwaggerModule.setup('api', app, document, {
+    SwaggerModule.setup('/api', app, document, {
+      customCss: '/api/swagger-ui.css',
+      customJs: '/api/swagger-ui-bundle.js',
       swaggerOptions: {
         persistAuthorization: true,
       },
