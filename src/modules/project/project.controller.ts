@@ -1,12 +1,13 @@
 import { Controller, Get, Post, Body, Param, Delete, UseInterceptors, UploadedFile, UseGuards } from '@nestjs/common';
 import { ProjectService } from './project.service';
 import { CreateProjectDto } from './dto/create-project.dto';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Project } from './entities/project.entity';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @ApiTags('Projects')
+@ApiBearerAuth()
 @Controller('project')
 @UseGuards(JwtAuthGuard)
 export class ProjectController {

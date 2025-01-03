@@ -1,11 +1,12 @@
 import { Controller, Get, Post, Body, Delete, Param, UseGuards } from '@nestjs/common';
 import { CreateCertificationDto } from './dto/create-certification.dto';
 import { CertificationService } from './certification.service';
-import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiBearerAuth } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @ApiTags('Certification')
 @Controller('certification')
+@ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 export class CertificationController {
   constructor(private readonly certificationService: CertificationService) { }

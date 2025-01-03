@@ -1,11 +1,12 @@
 import { Controller, Get, UseGuards } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { GithubService } from './github.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { ViewRepoDto } from './dto/view-repo.dto'; // Supondo que você tenha importado a classe ViewRepoDto
 
 @ApiTags('Github')
 @Controller('github')
+@ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 export class GithubController {
   constructor(private readonly githubService: GithubService) { }

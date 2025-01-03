@@ -7,14 +7,8 @@ export class SwaggerConfig {
       .setTitle('Portifolio API')
       .setDescription('Documentação para a api do portifolio')
       .setVersion('1.0')
-      .addBearerAuth(
-        {
-          type: 'http',
-          scheme: 'bearer',
-          bearerFormat: 'JWT',
-        },
-        'Authorization',
-      )
+      .addTag('portifolio')
+      .addBearerAuth()
       .build();
 
     const document = SwaggerModule.createDocument(app, config);

@@ -18,6 +18,8 @@ async function bootstrap() {
   });
 
   SwaggerConfig.setup(app);
+  
+
   app.useGlobalFilters(new AllExceptionsFilter());
 
   await app.listen(3000);

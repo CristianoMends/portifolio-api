@@ -1,12 +1,13 @@
 import { Controller, Get, Post, Body, Param, UseGuards } from '@nestjs/common';
 import { AnalyticsService } from './analytics.service';
 import { CreateAnalyticsDto } from './dto/create-analytics.dto';
-import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiBearerAuth } from '@nestjs/swagger';
 import { Analytics } from './entities/analytics.entity';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @ApiTags('Analytics')
 @Controller('analytics')
+@ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 export class AnalyticsController {
   constructor(private readonly analyticsService: AnalyticsService) {}
