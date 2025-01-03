@@ -1,10 +1,10 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
-@ApiTags('Aplicação') 
-@Controller()
+@ApiTags('Aplicação')
+@Controller('test')
 export class AppController {
-  
+
   @Get()
   @ApiOperation({ summary: 'Retorna uma mensagem de Olá Mundo' })
   @ApiResponse({
