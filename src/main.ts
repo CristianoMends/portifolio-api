@@ -19,13 +19,10 @@ async function bootstrap() {
   });
 
   SwaggerConfig.setup(app);
-
-  app.setGlobalPrefix('api');
-
   app.useGlobalFilters(new AllExceptionsFilter());
 
   const port = process.env.PORT || 3000;
   await app.listen(port);
-  console.log(`Application is running on: ${port}/api`);
+  console.log(`Application is running on port ${port}`);
 }
 bootstrap();

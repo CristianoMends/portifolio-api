@@ -9,10 +9,16 @@ import { CertificationModule } from './modules/certification/certification.modul
 import { HardSkillModule } from './modules/hard-skill/hard-skill.module';
 import { ProjectModule } from './modules/project/project.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 dotenv.config();
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+      serveRoot: '/',
+    }),
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.DATABASE_URL,
