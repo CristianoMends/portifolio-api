@@ -10,7 +10,7 @@ export class SwaggerConfig {
       .setDescription('Documentação para a api do portifolio')
       .setVersion('1.0')
       .addBearerAuth()
-      .addServer('https://portifolioapi.vercel.app')
+      .addServer('https://portifolioapi.vercel.app')      
       .build();
 
     const document = SwaggerModule.createDocument(app, config);
