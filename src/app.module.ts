@@ -17,7 +17,7 @@ dotenv.config();
   imports: [
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public'),
-      serveRoot: '/',
+      serveRoot: '/api',
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
