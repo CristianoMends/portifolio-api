@@ -14,7 +14,7 @@ export class AboutService {
   async create(createAboutDto: CreateAboutDto) {
     try {
       const about = this.repo.create(createAboutDto);
-      return await this.repo.save(about);
+      await this.repo.save(about);
     } catch (error) {
       throw new BusinessException('CREATE_ERROR', 'Erro ao criar o registro About');
     }
@@ -59,7 +59,6 @@ export class AboutService {
       }
 
       await this.repo.delete(id);
-      return { message: 'Registro removido com sucesso' };
     } catch (error) {
       throw new BusinessException('REMOVE_ERROR', 'Erro ao remover o registro About');
     }

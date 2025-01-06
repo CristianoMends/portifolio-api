@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, UseGuards } from '@nestjs/common';
 import { AboutService } from './about.service';
 import { CreateAboutDto } from './dto/create-about.dto';
 import { ApiBearerAuth, ApiBody, ApiOperation, ApiParam, ApiResponse } from '@nestjs/swagger';
@@ -8,37 +8,37 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 @UseGuards(JwtAuthGuard)
 @ApiBearerAuth()
 export class AboutController {
-  constructor(private readonly aboutService: AboutService) { }
+  constructor(private readonly aboutService: AboutService) {}
 
-  @ApiOperation({ summary: 'Create a new about entry' })
-  @ApiResponse({ status: 201, description: 'About created successfully.' })
-  @ApiResponse({ status: 400, description: 'Invalid input data.' })
+  @ApiOperation({ summary: 'Criar uma nova entrada na seção "Sobre"' })
+  @ApiResponse({ status: 201, description: 'Entrada criada com sucesso.' })
+  @ApiResponse({ status: 400, description: 'Dados de entrada inválidos.' })
   @ApiBody({ type: CreateAboutDto })
   @Post()
   create(@Body() createAboutDto: CreateAboutDto) {
     return this.aboutService.create(createAboutDto);
   }
 
-  @ApiOperation({ summary: 'Retrieve all about entries' })
-  @ApiResponse({ status: 200, description: 'List of about entries retrieved successfully.' })
+  @ApiOperation({ summary: 'Recuperar todas as entradas da seção "Sobre"' })
+  @ApiResponse({ status: 200, description: 'Lista de entradas recuperada com sucesso.' })
   @Get()
   findAll() {
     return this.aboutService.findAll();
   }
 
-  @ApiOperation({ summary: 'Retrieve a specific about entry by ID' })
-  @ApiResponse({ status: 200, description: 'About entry retrieved successfully.' })
-  @ApiResponse({ status: 404, description: 'About entry not found.' })
-  @ApiParam({ name: 'id', type: Number, description: 'The ID of the about entry to retrieve' })
+  @ApiOperation({ summary: 'Recuperar uma entrada específica da seção "Sobre" pelo ID' })
+  @ApiResponse({ status: 200, description: 'Entrada recuperada com sucesso.' })
+  @ApiResponse({ status: 404, description: 'Entrada não encontrada.' })
+  @ApiParam({ name: 'id', type: Number, description: 'O ID da entrada que deseja recuperar' })
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.aboutService.findOne(+id);
   }
 
-  @ApiOperation({ summary: 'Delete a specific about entry by ID' })
-  @ApiResponse({ status: 200, description: 'About entry deleted successfully.' })
-  @ApiResponse({ status: 404, description: 'About entry not found.' })
-  @ApiParam({ name: 'id', type: Number, description: 'The ID of the about entry to delete' })
+  @ApiOperation({ summary: 'Deletar uma entrada específica da seção "Sobre" pelo ID' })
+  @ApiResponse({ status: 200, description: 'Entrada deletada com sucesso.' })
+  @ApiResponse({ status: 404, description: 'Entrada não encontrada.' })
+  @ApiParam({ name: 'id', type: Number, description: 'O ID da entrada que deseja deletar' })
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.aboutService.remove(+id);

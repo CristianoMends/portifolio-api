@@ -11,9 +11,9 @@ export class CertificationService {
     private certificationsRepository: Repository<Certification>,
   ) { }
 
-  async create(createCertificationDto: CreateCertificationDto): Promise<Certification> {
+  async create(createCertificationDto: CreateCertificationDto) {
     const certification = this.certificationsRepository.create(createCertificationDto);
-    return await this.certificationsRepository.save(certification);
+    await this.certificationsRepository.save(certification);
   }
 
   async findAll(): Promise<Certification[]> {

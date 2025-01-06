@@ -10,8 +10,11 @@ export class SwaggerConfig {
       .setDescription('Documentação para a api do portifolio')
       .setVersion('1.0')
       .addBearerAuth()
-      .addServer('https://portifolioapi.vercel.app')      
+      .addServer('https://portifolioapi.vercel.app')
       .build();
+
+    const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.18.2/swagger-ui.css";
+    const SWAGGER_BUDLE = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.18.2/swagger-ui-bundle.js";
 
     const document = SwaggerModule.createDocument(app, config);
 
@@ -19,6 +22,8 @@ export class SwaggerConfig {
       swaggerOptions: {
         persistAuthorization: true,
       },
+      customCssUrl: CSS_URL,
+      customJs: SWAGGER_BUDLE,
       customSiteTitle: 'Portifolio API - Documentação',
     });
   }

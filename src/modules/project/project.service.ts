@@ -11,7 +11,7 @@ export class ProjectService {
     @InjectRepository(Project) private projectRepository: Repository<Project>,
   ) { }
 
-  async create(createProjectDto: CreateProjectDto, image: Express.Multer.File): Promise<Project> {
+  async create(createProjectDto: CreateProjectDto, image: Express.Multer.File) {
     if (!image.mimetype.startsWith('image/')) {
       throw new HttpException('Invalid file type. Only images are allowed.', HttpStatus.BAD_REQUEST);
     }
@@ -30,7 +30,7 @@ export class ProjectService {
 
     project.image = blob.url;
     project.createdAt = new Date();
-    return this.projectRepository.save(project);
+    this.projectRepository.save(project);
   }
 
   async findAll(): Promise<Project[]> {

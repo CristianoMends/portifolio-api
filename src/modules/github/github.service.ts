@@ -32,7 +32,19 @@ export class GithubService {
           headers: { Authorization: `Bearer ${this.token}` },
         });
 
+        const languages = await axios.get(`${r.languages_url}`, {
+          headers: { Authorization: `Bearer ${this.token}` },
+        })
+
+        let langs: string[] = [];
+
+        for (let l in languages.data) {
+          langs.push(l)
+        }
+
         const repoDto = new ViewRepoDto(r);
+
+        repoDto.languages = langs;
 
         repoDto.collaborators = collaborators.data.map((collaborator: any) => ({
           id: collaborator.id,

@@ -13,7 +13,7 @@ export class AnalyticsService {
   async create(createAnalyticsDto: CreateAnalyticsDto) {
     const analytics = this.repo.create(createAnalyticsDto);
     analytics.accessDate = new Date();
-    return await this.repo.save(analytics);
+    await this.repo.save(analytics);
   }
 
   async findAll(): Promise<Analytics[]> {

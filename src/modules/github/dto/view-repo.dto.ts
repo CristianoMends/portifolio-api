@@ -113,6 +113,12 @@ export class ViewRepoDto {
     })
     fork: boolean;
 
+    @ApiProperty({
+        description: 'Lista de linguagens usadas',
+        example: ['javascript', 'nestjs'],
+    })
+    languages: string[];
+
     constructor(repo: any) {
         this.id = repo.id;
         this.name = repo.name;
@@ -126,7 +132,6 @@ export class ViewRepoDto {
         this.language = repo.language;
         this.languages_url = repo.languages_url;
         this.topics = repo.topics;
-
         this.collaborators = repo.collaborators || [];
     }
 }
