@@ -26,6 +26,12 @@ export class ViewRepoDto {
     html_url: string;
 
     @ApiProperty({
+        description: 'Contagem de estrelas do repositorio',
+        example: '5',
+    })
+    stars_count: number;
+
+    @ApiProperty({
         description: 'Descrição do repositório',
         example: 'Este é um repositório de exemplo.',
     })

@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { GithubService } from './github.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
@@ -21,7 +21,14 @@ export class GithubController {
     description: 'Lista de repositórios',
     type: [ViewRepoDto],
   })
-  async getRepos() {
-    return this.githubService.getRepos();
+  async getRepos(
+    @Query('sortBy') sortBy: string = 'created',        
+    @Query('direction') direction: string = 'desc',     
+    @Query('limit') limit: number = 10,                 
+    @Query('type') type: string = 'all',                 
+    @Query('page') page: number = 1,                    
+    @Query('per_page') perPage: number = 30             
+  ) {
+    return this.githubService.getRepos(sortBy, direction, limit, type, page, perPage);
   }
 }

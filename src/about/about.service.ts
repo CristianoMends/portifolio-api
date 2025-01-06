@@ -3,7 +3,7 @@ import { CreateAboutDto } from './dto/create-about.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { About } from './entities/about.entity';
 import { Repository } from 'typeorm';
-import { BusinessException } from '../../exception/business-exception';
+import { BusinessException } from '../exception/business-exception';
 
 @Injectable()
 export class AboutService {
