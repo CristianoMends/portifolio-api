@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateCertificationDto {
@@ -21,10 +20,3 @@ export class CreateCertificationDto {
   })
   link: string;
 }
-=======
-export class CreateCertificationDto {
-    name: string;
-    image: string;
-    link: string;
-  }
->>>>>>> 17628a8bdb8287b3bbd83990ddefd8d4e515cbc0
