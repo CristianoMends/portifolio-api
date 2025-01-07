@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Delete, Param, UseGuards } from '@nestjs/c
 import { CreateCertificationDto } from './dto/create-certification.dto';
 import { CertificationService } from './certification.service';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiBearerAuth } from '@nestjs/swagger';
-import { IpDomainOrTokenGuard } from 'src/auth/origin-check.middleware';
+import { IpDomainOrTokenGuard } from '../auth/origin-check.middleware';
 
 @ApiTags('Certification')
 @Controller('certification')

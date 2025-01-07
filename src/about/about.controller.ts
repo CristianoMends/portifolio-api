@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Param, Delete, UseGuards } from '@nestjs/c
 import { AboutService } from './about.service';
 import { CreateAboutDto } from './dto/create-about.dto';
 import { ApiBearerAuth, ApiBody, ApiOperation, ApiParam, ApiResponse } from '@nestjs/swagger';
-import { IpDomainOrTokenGuard } from 'src/auth/origin-check.middleware';
+import { IpDomainOrTokenGuard } from '../auth/origin-check.middleware';
 
 @Controller('about')
 @UseGuards(IpDomainOrTokenGuard) 

@@ -1,8 +1,8 @@
 import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { GithubService } from './github.service';
-import { ViewRepoDto } from './dto/view-repo.dto'; // Supondo que você tenha importado a classe ViewRepoDto
-import { IpDomainOrTokenGuard } from 'src/auth/origin-check.middleware';
+import { ViewRepoDto } from './dto/view-repo.dto';
+import { IpDomainOrTokenGuard } from '../auth/origin-check.middleware';
 
 @ApiTags('Github')
 @Controller('github')

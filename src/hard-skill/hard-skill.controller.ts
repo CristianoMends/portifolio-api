@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Param, Delete, UseGuards } from '@nestjs/c
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { HardSkillService } from './hard-skill.service';
 import { CreateHardSkillDto } from './dto/create-hard-skill.dto';
-import { IpDomainOrTokenGuard } from 'src/auth/origin-check.middleware';
+import { IpDomainOrTokenGuard } from '../auth/origin-check.middleware';
 
 @ApiTags('HardSkills')
 @Controller('skill')

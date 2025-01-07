@@ -4,7 +4,7 @@ import { CreateProjectDto } from './dto/create-project.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Project } from './entities/project.entity';
-import { IpDomainOrTokenGuard } from 'src/auth/origin-check.middleware';
+import { IpDomainOrTokenGuard } from '../auth/origin-check.middleware';
 
 @ApiTags('Projects')
 @ApiBearerAuth()
