@@ -2,10 +2,10 @@ import { Controller, Get, Post, Body, Param, Delete, UseGuards } from '@nestjs/c
 import { AboutService } from './about.service';
 import { CreateAboutDto } from './dto/create-about.dto';
 import { ApiBearerAuth, ApiBody, ApiOperation, ApiParam, ApiResponse } from '@nestjs/swagger';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { IpDomainOrTokenGuard } from 'src/auth/origin-check.middleware';
 
 @Controller('about')
-@UseGuards(JwtAuthGuard)
+@UseGuards(IpDomainOrTokenGuard) 
 @ApiBearerAuth()
 export class AboutController {
   constructor(private readonly aboutService: AboutService) {}

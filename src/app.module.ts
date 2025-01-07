@@ -8,7 +8,6 @@ import { AboutModule } from './about/about.module';
 import { CertificationModule } from './certification/certification.module';
 import { HardSkillModule } from './hard-skill/hard-skill.module';
 import { ProjectModule } from './project/project.module';
-import { AuthModule } from './auth/auth.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 dotenv.config();
@@ -29,7 +28,7 @@ dotenv.config();
       synchronize: true,
       //logging: true,
     }),
-    ProjectModule, HardSkillModule, CertificationModule, AboutModule, AnalyticsModule, GithubModule, AuthModule
+    ProjectModule, HardSkillModule, CertificationModule, AboutModule, AnalyticsModule, GithubModule
   ],
   controllers: [AppController],
 })

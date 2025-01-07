@@ -1,13 +1,13 @@
 import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { GithubService } from './github.service';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { ViewRepoDto } from './dto/view-repo.dto'; // Supondo que você tenha importado a classe ViewRepoDto
+import { IpDomainOrTokenGuard } from 'src/auth/origin-check.middleware';
 
 @ApiTags('Github')
 @Controller('github')
 @ApiBearerAuth()
-@UseGuards(JwtAuthGuard)
+@UseGuards(IpDomainOrTokenGuard) 
 export class GithubController {
   constructor(private readonly githubService: GithubService) { }
 

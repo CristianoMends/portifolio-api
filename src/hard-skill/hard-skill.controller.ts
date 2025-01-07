@@ -2,12 +2,12 @@ import { Controller, Get, Post, Body, Param, Delete, UseGuards } from '@nestjs/c
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { HardSkillService } from './hard-skill.service';
 import { CreateHardSkillDto } from './dto/create-hard-skill.dto';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { IpDomainOrTokenGuard } from 'src/auth/origin-check.middleware';
 
 @ApiTags('HardSkills')
 @Controller('skill')
 @ApiBearerAuth()
-@UseGuards(JwtAuthGuard)
+@UseGuards(IpDomainOrTokenGuard) 
 export class HardSkillController {
   constructor(private readonly hardSkillService: HardSkillService) { }
 
