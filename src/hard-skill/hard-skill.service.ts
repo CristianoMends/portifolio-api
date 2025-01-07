@@ -11,9 +11,9 @@ export class HardSkillService {
     private skillsRepository: Repository<HardSkill>,
   ) { }
 
-  async create(createSkillDto: CreateHardSkillDto): Promise<HardSkill> {
+  async create(createSkillDto: CreateHardSkillDto){
     const skill = this.skillsRepository.create(createSkillDto);
-    return await this.skillsRepository.save(skill);
+    await this.skillsRepository.save(skill);
   }
 
   async findAll(): Promise<HardSkill[]> {
