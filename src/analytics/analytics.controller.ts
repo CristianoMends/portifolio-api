@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Controller, Get, Post, Body, Param, UseGuards } from '@nestjs/common';
 import { AnalyticsService } from './analytics.service';
 import { CreateAnalyticsDto } from './dto/create-analytics.dto';
@@ -25,11 +26,23 @@ export class AnalyticsController {
     description: 'Analytics criado com sucesso',
     type: Analytics,
   })
+=======
+import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { AnalyticsService } from './analytics.service';
+import { CreateAnalyticsDto } from './dto/create-analytics.dto';
+
+@Controller('analytics')
+export class AnalyticsController {
+  constructor(private readonly analyticsService: AnalyticsService) { }
+
+  @Post()
+>>>>>>> 17628a8bdb8287b3bbd83990ddefd8d4e515cbc0
   create(@Body() createAnalyticsDto: CreateAnalyticsDto) {
     return this.analyticsService.create(createAnalyticsDto);
   }
 
   @Get()
+<<<<<<< HEAD
   @ApiOperation({
     summary: 'Retorna todos os registros de Analytics',
     description: 'Retorna uma lista de todos os registros de Analytics.',
@@ -53,6 +66,12 @@ export class AnalyticsController {
     description: 'Quantidade total de registros',
     type: Number,
   })
+=======
+  findAll() {
+    return this.analyticsService.findAll();
+  }
+  @Get('/count')
+>>>>>>> 17628a8bdb8287b3bbd83990ddefd8d4e515cbc0
   async findCount(): Promise<number> {
     return await this.analyticsService.findCount();
   }

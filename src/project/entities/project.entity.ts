@@ -1,4 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+<<<<<<< HEAD
 import { ApiProperty } from '@nestjs/swagger';
 
 
@@ -59,16 +60,46 @@ export class Project {
   })
   private technologies: string;
 
+=======
+
+@Entity('projects')
+export class Project {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  name: string;
+
+  @Column({ length: 500 })
+  description: string;
+
+  @Column({ nullable: true })
+  url: string;
+
+  @Column({ nullable: true })
+  repositoryUrl: string;
+
+  @Column({ nullable: true })
+  youtubeUrl: string;
+
+  @Column({ type: 'text', nullable: true })
+  private technologies: string;
+  
+>>>>>>> 17628a8bdb8287b3bbd83990ddefd8d4e515cbc0
   getTechnologies(): string[] {
     return this.technologies ? JSON.parse(this.technologies) : [];
   }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 17628a8bdb8287b3bbd83990ddefd8d4e515cbc0
   setTechnologies(value: string) {
     this.technologies = value;
   }
 
   @Column()
+<<<<<<< HEAD
   @ApiProperty({
     description: 'URL da imagem do projeto',
     example: 'https://www.exemplo.com/imagem.png',
@@ -80,5 +111,10 @@ export class Project {
     description: 'Data de criação do projeto',
     example: '2025-01-01T00:00:00Z',
   })
+=======
+  image: string;
+
+  @Column()
+>>>>>>> 17628a8bdb8287b3bbd83990ddefd8d4e515cbc0
   createdAt: Date;
 }
