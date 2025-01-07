@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Controller, Get, Post, Body, Delete, Param, UseGuards } from '@nestjs/common';
 import { CreateCertificationDto } from './dto/create-certification.dto';
 import { CertificationService } from './certification.service';
@@ -29,23 +28,11 @@ export class CertificationController {
     status: 400,
     description: 'Erro ao criar a certificação',
   })
-=======
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { CreateCertificationDto } from './dto/create-certification.dto';
-import { CertificationService } from './certification.service';
-
-@Controller('certification')
-export class CertificationController {
-  constructor(private readonly certificationService: CertificationService) {}
-
-  @Post()
->>>>>>> 17628a8bdb8287b3bbd83990ddefd8d4e515cbc0
   create(@Body() createCertificationDto: CreateCertificationDto) {
     return this.certificationService.create(createCertificationDto);
   }
 
   @Get()
-<<<<<<< HEAD
   @ApiOperation({
     summary: 'Obter todas as certificações',
     description: 'Recupera a lista de todas as certificações cadastradas.',
@@ -55,14 +42,11 @@ export class CertificationController {
     description: 'Lista de certificações',
     type: [CreateCertificationDto],
   })
-=======
->>>>>>> 17628a8bdb8287b3bbd83990ddefd8d4e515cbc0
   findAll() {
     return this.certificationService.findAll();
   }
 
   @Delete(':id')
-<<<<<<< HEAD
   @ApiOperation({
     summary: 'Deletar certificação',
     description: 'Deleta a certificação com o ID fornecido.',
@@ -75,8 +59,6 @@ export class CertificationController {
     status: 404,
     description: 'Certificação não encontrada',
   })
-=======
->>>>>>> 17628a8bdb8287b3bbd83990ddefd8d4e515cbc0
   remove(@Param('id') id: string) {
     return this.certificationService.remove(+id);
   }
