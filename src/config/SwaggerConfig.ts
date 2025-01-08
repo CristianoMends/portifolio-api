@@ -8,6 +8,7 @@ export class SwaggerConfig {
       .setDescription('Documentação para a API do portfólio')
       .setVersion('1.0')
       .addBearerAuth()
+      .addServer('http://localhost:3000')
       .addServer('https://portifolioapi.vercel.app')
       .build();
 
@@ -15,9 +16,13 @@ export class SwaggerConfig {
 
     SwaggerModule.setup('api', app, document, {
       swaggerOptions: {
-        persistAuthorization: true, 
+        persistAuthorization: true,
       },
+
       customSiteTitle: 'Portifolio API - Documentação',
+    });
+    app.use('/swagger-json', (req, res) => {
+      res.json(document);
     });
   }
 }
