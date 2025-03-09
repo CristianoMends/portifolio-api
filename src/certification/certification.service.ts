@@ -17,7 +17,13 @@ export class CertificationService {
   }
 
   async findAll(): Promise<Certification[]> {
-    return this.certificationsRepository.find();
+
+    return await this.certificationsRepository.find({
+      order: {
+        date: 'DESC',
+      },
+    });
+
   }
 
   async remove(id: number): Promise<void> {

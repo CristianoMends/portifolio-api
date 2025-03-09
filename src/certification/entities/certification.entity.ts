@@ -13,5 +13,10 @@ export class Certification {
     
     @Column()
     link: string;
+
+    @Column({ type: 'date'})
+    date: string;
+    
+    
     
 }

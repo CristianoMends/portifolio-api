@@ -19,4 +19,11 @@ export class CreateCertificationDto {
     example: 'https://example.com/cert-link',
   })
   link: string;
+
+  @ApiProperty({
+    description: 'Data da certificação',
+    example: '2024-12-31',
+  })
+  date: string;
+
 }
